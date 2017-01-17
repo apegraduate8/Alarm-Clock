@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+
+	<style type="text/css">
+		
+		.switch {
+			display: inline-block;
+		}
+
+		img {
+			width: 400px;
+			height: 300px;
+		}
+	</style>
+</head>
+<body>
+
+
+<img src="goat.jpeg" class="switch">
+<img src="emmit.jpeg" class="switch">
+<img src="lynch.jpeg" class="switch">
+<img src="ray.jpeg" class="switch">
+<img src="ap.png" class="switch">
+
+<a class="back-button" onclick="plusDivs(-1)">&#10094;</a>
+<a class="forward-button" onclick="plusDivs(+1)">&#10095;</a>
+
+<script type="text/javascript">
+	
+////	var a;
+////	
+
+////	for (var i = 0; i < 10; i++) {
+////		document.write(i + "<br>") ;
+////	}
+
+	
+///var twxt;
+///var i;
+/// for(var i = 5; i <= 135; i*=3) {
+/// 	document.write(i + "<br>");
+/// }
+var slideIndex = 1;
+showDivs(slideIndex);////1
+
+function plusDivs(n) {
+	showDivs(slideIndex = slideIndex + n);///showDivs(1 = 1 + -1)
+}
+
+function showDivs(n) {
+	var i;
+	var x = document.getElementsByClassName('switch');////switch class
+	if(n > x.length){slideIndex = 1};
+	if(n < 1){slideIndex = slideIndex.length};
+
+	for(i = 0; i < x.length; i++) {
+		x[i].style.display = "none";
+	} 
+	x[slideIndex - 1].style.display = "block";
+
+}
+
+
+
+
+
+
+
+
+
+
+
+var list = [];
+
+
+</script>
+
+</body>
+</html>

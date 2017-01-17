@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>alarm clock</title>
+
+
+	<style type="text/css">
+	* {
+		font-size: 100%;
+		margin: 0px;
+		padding: 0px;
+	}
+		
+	.clock {
+		width: 450px;
+		height: 250px;
+		margin: 0 auto;
+		color: red;
+		font-size: 2em;
+		border: 2px solid green;
+		background-color: black;
+	}
+	.display {
+		width: 80%;
+		height: 80%;
+		margin: 5% auto;
+		color: red;
+		text-align: center;
+		background-color: grey;
+	}
+	.display div {
+		display: inline-block;
+		width: 50%;
+		height: 50%;
+		border: 2px solid black;
+		font-size: 240%;
+		background-color: black;
+	}
+	.hour {
+
+	}
+	.min {
+
+	}
+	.sec {
+		width: 25%;
+	}
+	em {
+		font-size: 120%;
+	}
+
+	</style>
+</head>
+<body>
+
+<audio controls autoplay>
+	
+</audio>
+<div class="clock">
+	<div class="display">
+		<div class="hour"></div>
+		
+		<div class="sec" style="width:25%; font-size:150%;position:relative;top:-27px;left:-15px;"></div>
+	</div>
+	<div class="alarm-buttons">
+		<input type="button" name="10min" onclick="alarm()" value="10sec-timer">
+	</div>
+
+
+</div>
+
+
+
+<script type="text/javascript">
+	var hour = document.querySelector('.hour'); ///getting hour class
+	var minute = document.querySelector('.min');
+	var second = document.querySelector('.sec'); //getting second class
+	//var emm = document.querySelector('.sec em');
+	var aud = document.querySelector('audio');//getting audio element
+	var sound;
+	var now;
+	var ring;
+	
+
+	
+	var start = (function() {
+		setInterval(display, 1000);///calling the displayfunction every second
+		
+		setInterval(function() {
+		sound = display()[2] // incrementing sound variable to equal seconds
+		
+		if((ring != undefined) && (sound == ring)){
+		///checking to see if ring has a value and if so, check to see if sound is greater..when sound is greater add theaudio file
+
+		aud.innerHTML =	("<source src='kid_cudi.mp3' type='audio/mpeg'>")
+		} 
+	} , 1000);	
+
+		
+	}());	
+	
+	
+	///window.onload = 
+/////this function is being called every second by the setInterval
+	 function display() {
+	 	var clockTime = new Date();///instaintiate the date
+		var h = clockTime.getHours();///getting the hours
+		var m = clockTime.getMinutes();///getting the minutes
+		var s = clockTime.getSeconds();///getting seconds
+
+		//if(s.length === 2){console.log("minutes is 1 decimal")};
+		////appending the the hours and minutes to HTML every second
+			hour.innerHTML = "<span>"+ h +":"+m+"  </span>";
+			///minute.innerHTML = "<span>"+m+":</span>";
+			second.innerHTML = "<span> "+s+" </span> "
+
+			///putting the hour,minute,and second variables into a array that allows me to access any one of those variables outside of this function..return them in a array
+			var Time = [h, m, s];
+			return Time;
+					
+	}
+
+	
+
+	
+
+	function alarm() {
+		//console.log("hi")
+		 now = sound;////storing the current second into the now variable
+      
+		 ring = (now+10); ///ring is just adding ten to the now variable to create a time interval for when the alarm rings
+		
+		///if(sound >= ring){
+		///	console.log(sound)
+		///aud.innerHTML =	("<source src='kid_cudi.mp3' type='audio////mpeg'>")
+		///} 
+	}
+
+//function ringRing() {
+
+//}
+
+</script>
+</body>
+</html>
